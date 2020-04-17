@@ -30,14 +30,23 @@ function CambiaLingua(slingua) {
  */
 function CambiaLinguaTest(url, slingua) {
     if (url.indexOf('?') !== -1) {
-        var pippo = url.replace('lang=EN', '').replace('lang=IT', '').replace('lang=ES', '').replace('lang=FR', '').replace('lang=DE', '');
-        var pippo = pippo.replace('lang=en', '').replace('lang=it', '').replace('lang=es', '').replace('lang=fr', '').replace('lang=de', '') + '&lang=' + slingua;
+        var pippo = url.replace('lang=EN', '')
+            .replace('lang=IT', '')
+            .replace('lang=ES', '')
+            .replace('lang=FR', '')
+            .replace('lang=DE', '');
+            .replace('lang=en', '')
+            .replace('lang=it', '')
+            .replace('lang=es', '')
+            .replace('lang=fr', '')
+            .replace('lang=de', '') + '&lang=' + slingua;
+
         pippo = pippo.replace('&&', '&').replace('default.aspx?&', 'default.aspx?');
+        
         return pippo;
-    } else {
-        //C15
-        return url + '?lang=' + slingua;
-    }
+    } 
+       
+    return url + '?lang=' + slingua;
 }
 
 /**
@@ -74,7 +83,7 @@ function cambiaLinguaTest(url, slingua) {
  */
 function CambiaLinguaRegexTest(url, slingua) {
     if (url.indexOf('?') !== -1) {
-        var pippo = url.replace(/lang=([Ee][NnSs]|[Ii][Tt]|FR|DE)/gm, '') + '&lang=' + slingua;
+        var pippo = url.replace(/lang=(e[ns]|it|fr|de)/i, '') + '&lang=' + slingua;
         pippo = pippo.replace('&&', '&').replace('default.aspx?&', 'default.aspx?');
         return pippo;
     } else {
@@ -98,7 +107,7 @@ function CambiaLinguaRegexTest(url, slingua) {
  */
 function cambiaLinguaRegexTest(url, slingua) {
     if (url.indexOf('?') !== -1) {
-        var pippo = url.replace(/lang=([Ee][NnSs]|[Ii][Tt]|FR|DE)/gm, '') + '&lang=' + slingua;
+        var pippo = url.replace(/lang=(e[ns]|it|fr|de)/i, '') + '&lang=' + slingua;
         pippo = pippo.replace('&&', '&').replace('default.aspx?&', 'default.aspx?');
         return pippo;
     } else {
@@ -118,7 +127,7 @@ function cambiaLinguaRegexTest(url, slingua) {
  */
 function cambiaLinguaRegexOptimTest(url, slingua) {
     if (url.indexOf('?') !== -1) {
-        return (url.replace(/lang=([Ee][NnSs]|[Ii][Tt]|FR|DE)/gm, '') + '&lang=' + slingua)
+        return (url.replace(/lang=(e[ns]|it|fr|de)/i, '') + '&lang=' + slingua)
             .replace('&&', '&')
             .replace('default.aspx?&', 'default.aspx?');
     }
